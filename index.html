@@ -200,4 +200,162 @@ function bereken(){
 </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NL Tier Test Calculator</title>
+
+<style>
+body {
+    background: #121212;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+select {
+    padding: 8px;
+    margin: 10px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 24px;
+}
+</style>
+</head>
+<body>
+
+<h1>NL Tier Test Calculator</h1>
+
+<h3>Crystal</h3>
+<select class="tier">
+    <option value="1">LT5</option>
+    <option value="2">HT5</option>
+    <option value="3">LT4</option>
+    <option value="4">HT4</option>
+    <option value="5">LT3</option>
+    <option value="6">HT3</option>
+    <option value="7">LT2</option>
+    <option value="8">HT2</option>
+    <option value="9">LT1</option>
+    <option value="10">HT1</option>
+</select>
+
+<h3>Sword</h3>
+<select class="tier">
+    <option value="1">LT5</option>
+    <option value="2">HT5</option>
+    <option value="3">LT4</option>
+    <option value="4">HT4</option>
+    <option value="5">LT3</option>
+    <option value="6">HT3</option>
+    <option value="7">LT2</option>
+    <option value="8">HT2</option>
+    <option value="9">LT1</option>
+    <option value="10">HT1</option>
+</select>
+
+<h3>Axe</h3>
+<select class="tier">
+    <option value="1">LT5</option>
+    <option value="2">HT5</option>
+    <option value="3">LT4</option>
+    <option value="4">HT4</option>
+    <option value="5">LT3</option>
+    <option value="6">HT3</option>
+    <option value="7">LT2</option>
+    <option value="8">HT2</option>
+    <option value="9">LT1</option>
+    <option value="10">HT1</option>
+</select>
+
+<h3>Mace</h3>
+<select class="tier">
+    <option value="1">LT5</option>
+    <option value="2">HT5</option>
+    <option value="3">LT4</option>
+    <option value="4">HT4</option>
+    <option value="5">LT3</option>
+    <option value="6">HT3</option>
+    <option value="7">LT2</option>
+    <option value="8">HT2</option>
+    <option value="9">LT1</option>
+    <option value="10">HT1</option>
+</select>
+
+<h3>SMP</h3>
+<select class="tier">
+    <option value="1">LT5</option>
+    <option value="2">HT5</option>
+    <option value="3">LT4</option>
+    <option value="4">HT4</option>
+    <option value="5">LT3</option>
+    <option value="6">HT3</option>
+    <option value="7">LT2</option>
+    <option value="8">HT2</option>
+    <option value="9">LT1</option>
+    <option value="10">HT1</option>
+</select>
+
+<h3>UHC</h3>
+<select class="tier">
+    <option value="1">LT5</option>
+    <option value="2">HT5</option>
+    <option value="3">LT4</option>
+    <option value="4">HT4</option>
+    <option value="5">LT3</option>
+    <option value="6">HT3</option>
+    <option value="7">LT2</option>
+    <option value="8">HT2</option>
+    <option value="9">LT1</option>
+    <option value="10">HT1</option>
+</select>
+
+<h3>Pot</h3>
+<select class="tier">
+    <option value="1">LT5</option>
+    <option value="2">HT5</option>
+    <option value="3">LT4</option>
+    <option value="4">HT4</option>
+    <option value="5">LT3</option>
+    <option value="6">HT3</option>
+    <option value="7">LT2</option>
+    <option value="8">HT2</option>
+    <option value="9">LT1</option>
+    <option value="10">HT1</option>
+</select>
+
+<br><br>
+
 <button onclick="bereken()">Bereken</button>
+
+<div id="result"></div>
+
+<script>
+function bereken() {
+    let totaal = 0;
+
+    let tiers = document.querySelectorAll(".tier");
+
+    tiers.forEach(function(select) {
+        totaal += parseInt(select.value);
+    });
+
+    document.getElementById("result").innerHTML =
+        "Totale Score: " + totaal;
+}
+</script>
+
+</body>
+</html>
