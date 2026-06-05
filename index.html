@@ -1,13 +1,15 @@
-```html id="e4b84f"
+```html id="rtqu5x"
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>NL Tier Testing</title>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 
 <style>
 
@@ -92,6 +94,7 @@ button:hover{
 }
 
 </style>
+
 </head>
 <body>
 
@@ -104,6 +107,7 @@ button:hover{
 <h2>Admin Login</h2>
 
 <input type="password" id="password" placeholder="Admin wachtwoord">
+
 <button onclick="login()">Login</button>
 
 <div id="adminPanel" style="display:none;">
@@ -113,6 +117,7 @@ button:hover{
 <input type="text" id="playerName" placeholder="Spelernaam">
 
 <select id="gamemode">
+
 <option>Spear</option>
 <option>Mace</option>
 <option>Sword</option>
@@ -120,9 +125,11 @@ button:hover{
 <option>Speed</option>
 <option>Axe</option>
 <option>Vanilla</option>
+
 </select>
 
 <select id="tier">
+
 <option>HT1</option>
 <option>LT1</option>
 <option>HT2</option>
@@ -133,6 +140,7 @@ button:hover{
 <option>LT4</option>
 <option>HT5</option>
 <option>LT5</option>
+
 </select>
 
 <button onclick="addPlayer()">Opslaan</button>
@@ -146,12 +154,19 @@ button:hover{
 <div class="filterButtons">
 
 <button onclick="filterMode('ALL')">All</button>
+
 <button onclick="filterMode('Spear')">Spear</button>
+
 <button onclick="filterMode('Mace')">Mace</button>
+
 <button onclick="filterMode('Sword')">Sword</button>
+
 <button onclick="filterMode('UHC')">UHC</button>
+
 <button onclick="filterMode('Speed')">Speed</button>
+
 <button onclick="filterMode('Axe')">Axe</button>
+
 <button onclick="filterMode('Vanilla')">Vanilla</button>
 
 </div>
@@ -168,7 +183,7 @@ const SUPABASE_URL = "https://mgtwbthpqinyxrcnglwt.supabase.co";
 
 const SUPABASE_KEY = "sb_publishable_kj1HG03vn4ZMqDgC8zWzhA_CRNDty9O";
 
-const supabase = window.supabase.createClient(
+const supabaseClient = supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
 );
@@ -176,6 +191,7 @@ const supabase = window.supabase.createClient(
 const ADMIN_PASSWORD = "1234";
 
 const tierRank = {
+
     "HT1":1,
     "LT1":2,
     "HT2":3,
@@ -186,6 +202,7 @@ const tierRank = {
     "LT4":8,
     "HT5":9,
     "LT5":10
+
 };
 
 let currentFilter = "ALL";
@@ -206,7 +223,7 @@ function login(){
 
         loadPlayers();
 
-    } else {
+    }else{
 
         alert("Verkeerd wachtwoord");
 
@@ -230,13 +247,13 @@ async function addPlayer(){
 
     if(player === "") return;
 
-    await supabase
+    await supabaseClient
     .from("players")
     .insert([
         {
-            player,
-            gamemode,
-            tier
+            player: player,
+            gamemode: gamemode,
+            tier: tier
         }
     ]);
 
@@ -247,7 +264,7 @@ async function addPlayer(){
 
 async function deletePlayer(id){
 
-    await supabase
+    await supabaseClient
     .from("players")
     .delete()
     .eq("id", id);
@@ -257,9 +274,16 @@ async function deletePlayer(id){
 
 async function loadPlayers(){
 
-    const { data } = await supabase
+    const { data, error } = await supabaseClient
     .from("players")
     .select("*");
+
+    if(error){
+
+        console.log(error);
+
+        return;
+    }
 
     const board = document.getElementById("leaderboard");
 
@@ -274,9 +298,12 @@ async function loadPlayers(){
         }
 
         board.innerHTML += `
+
             <div class="player">
 
-                <div class="rank">${entry.player}</div>
+                <div class="rank">
+                    ${entry.player}
+                </div>
 
                 <div>
                     ${entry.gamemode} • ${entry.tier}
@@ -291,6 +318,7 @@ async function loadPlayers(){
                 }
 
             </div>
+
         `;
     });
 }
