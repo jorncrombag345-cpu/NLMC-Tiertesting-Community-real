@@ -1,0 +1,14 @@
+```json id="rvbk0f"
+[
+  {
+    "player":"Steve",
+    "gamemode":"Spear",
+    "tier":"HT1"
+  },
+  {
+    "player":"Alex",
+    "gamemode":"Sword",
+    "tier":"LT2"
+  }
+]
+```
