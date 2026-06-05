@@ -1,35 +1,80 @@
+```html
 <!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>NL Tier Testing</title>
 
 <style>
+
 body{
     font-family:Arial,sans-serif;
     background:#121212;
     color:white;
     text-align:center;
     padding:20px;
+    margin:0;
 }
 
 .container{
-    max-width:700px;
+    max-width:800px;
     margin:auto;
 }
 
-input, select, button{
-    padding:10px;
+h1{
+    color:#55ff55;
+    font-size:40px;
+    text-shadow:2px 2px black;
+}
+
+input,select,button{
+    padding:12px;
     margin:5px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+}
+
+button{
+    background:#55ff55;
+    color:black;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    opacity:0.9;
 }
 
 .player{
-    background:#222;
-    padding:10px;
+    background:#1e1e1e;
+    padding:15px;
     margin:10px;
-    border-radius:10px;
+    border-radius:12px;
+    border-left:8px solid #55ff55;
+    box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
+
+.rank{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.deleteBtn{
+    background:red;
+    color:white;
+    margin-top:10px;
+}
+
+.adminBox{
+    background:#1a1a1a;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
 </style>
 </head>
 <body>
@@ -37,6 +82,8 @@ input, select, button{
 <div class="container">
 
 <h1>NL Tier Testing</h1>
+
+<div class="adminBox">
 
 <h2>Admin Login</h2>
 
@@ -60,39 +107,67 @@ input, select, button{
 </select>
 
 <select id="tier">
-<option>LT5</option>
-<option>HT5</option>
-<option>LT4</option>
-<option>HT4</option>
-<option>LT3</option>
-<option>HT3</option>
-<option>LT2</option>
-<option>HT2</option>
-<option>LT1</option>
 <option>HT1</option>
+<option>LT1</option>
+<option>HT2</option>
+<option>LT2</option>
+<option>HT3</option>
+<option>LT3</option>
+<option>HT4</option>
+<option>LT4</option>
+<option>HT5</option>
+<option>LT5</option>
 </select>
 
 <button onclick="addPlayer()">Opslaan</button>
 
 </div>
 
+</div>
+
 <h2>Leaderboard</h2>
+
 <div id="leaderboard"></div>
 
 </div>
 
 <script>
 
-const ADMIN_PASSWORD = "1234"; // verander dit
+const ADMIN_PASSWORD = "1234";
+
+const tierRank = {
+    "HT1":1,
+    "LT1":2,
+    "HT2":3,
+    "LT2":4,
+    "HT3":5,
+    "LT3":6,
+    "HT4":7,
+    "LT4":8,
+    "HT5":9,
+    "LT5":10
+};
+
+let isAdmin = false;
 
 function login(){
+
     const pass = document.getElementById("password").value;
 
     if(pass === ADMIN_PASSWORD){
+
+        isAdmin = true;
+
         document.getElementById("adminPanel").style.display = "block";
+
         alert("Ingelogd!");
+
+        renderLeaderboard();
+
     } else {
+
         alert("Verkeerd wachtwoord");
+
     }
 }
 
@@ -114,6 +189,19 @@ function addPlayer(){
 
     localStorage.setItem("tiers", JSON.stringify(data));
 
+    document.getElementById("playerName").value = "";
+
+    renderLeaderboard();
+}
+
+function deletePlayer(index){
+
+    let data = JSON.parse(localStorage.getItem("tiers") || "[]");
+
+    data.splice(index,1);
+
+    localStorage.setItem("tiers", JSON.stringify(data));
+
     renderLeaderboard();
 }
 
@@ -123,14 +211,29 @@ function renderLeaderboard(){
 
     let data = JSON.parse(localStorage.getItem("tiers") || "[]");
 
+    data.sort((a,b) => tierRank[a.tier] - tierRank[b.tier]);
+
     board.innerHTML = "";
 
-    data.forEach(entry => {
+    data.forEach((entry,index) => {
 
         board.innerHTML += `
             <div class="player">
-                <b>${entry.player}</b><br>
-                ${entry.gamemode} - ${entry.tier}
+
+                <div class="rank">${entry.player}</div>
+
+                <div>
+                    ${entry.gamemode} • ${entry.tier}
+                </div>
+
+                ${
+                    isAdmin
+                    ?
+                    `<button class="deleteBtn" onclick="deletePlayer(${index})">Delete</button>`
+                    :
+                    ""
+                }
+
             </div>
         `;
     });
@@ -142,3 +245,4 @@ renderLeaderboard();
 
 </body>
 </html>
+```
