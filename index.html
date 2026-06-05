@@ -1,10 +1,9 @@
-```html id="5a6f9m"
+```html id="n4s8zk"
 <!DOCTYPE html>
 <html lang="nl">
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>NL Tier Testing</title>
@@ -23,7 +22,7 @@ body{
 }
 
 .container{
-    max-width:900px;
+    max-width:1000px;
     margin:auto;
 }
 
@@ -36,15 +35,22 @@ h1{
 .player{
     background:#1e1e1e;
     padding:15px;
-    margin:10px;
+    margin:15px;
     border-radius:12px;
     border-left:8px solid #55ff55;
     box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
 .rank{
-    font-size:24px;
+    font-size:28px;
     font-weight:bold;
+    margin-bottom:10px;
+}
+
+.total{
+    color:#55ff55;
+    font-size:20px;
+    margin-bottom:10px;
 }
 
 button,input,select{
@@ -91,6 +97,11 @@ button:hover{
     background:red;
     color:white;
     margin-top:10px;
+}
+
+.mode{
+    margin:5px;
+    padding:5px;
 }
 
 </style>
@@ -154,19 +165,12 @@ button:hover{
 <div class="filterButtons">
 
 <button onclick="filterMode('ALL')">All</button>
-
 <button onclick="filterMode('Spear')">Spear</button>
-
 <button onclick="filterMode('Mace')">Mace</button>
-
 <button onclick="filterMode('Sword')">Sword</button>
-
 <button onclick="filterMode('UHC')">UHC</button>
-
 <button onclick="filterMode('Speed')">Speed</button>
-
 <button onclick="filterMode('Axe')">Axe</button>
-
 <button onclick="filterMode('Vanilla')">Vanilla</button>
 
 </div>
@@ -289,7 +293,7 @@ async function loadPlayers(){
 
     board.innerHTML = "";
 
-    data.sort((a,b) => tierRank[b.tier] - tierRank[a.tier]);
+    let groupedPlayers = {};
 
     data.forEach(entry => {
 
@@ -297,25 +301,50 @@ async function loadPlayers(){
             return;
         }
 
+        if(!groupedPlayers[entry.player]){
+
+            groupedPlayers[entry.player] = {
+                total:0,
+                modes:[],
+                ids:[]
+            };
+        }
+
+        groupedPlayers[entry.player].total += tierRank[entry.tier];
+
+        groupedPlayers[entry.player].modes.push(
+            `
+            <div class="mode">
+                ${entry.gamemode} • ${entry.tier} • ${tierRank[entry.tier]} punten
+            </div>
+            `
+        );
+
+        groupedPlayers[entry.player].ids.push(entry.id);
+
+    });
+
+    let sortedPlayers = Object.entries(groupedPlayers);
+
+    sortedPlayers.sort((a,b) => b[1].total - a[1].total);
+
+    sortedPlayers.forEach(([player, info]) => {
+
         board.innerHTML += `
 
             <div class="player">
 
                 <div class="rank">
-                    ${entry.player}
+                    ${player}
+                </div>
+
+                <div class="total">
+                    ⭐ ${info.total} punten totaal
                 </div>
 
                 <div>
-                    ${entry.gamemode} • ${entry.tier} • ${tierRank[entry.tier]} punten
+                    ${info.modes.join("")}
                 </div>
-
-                ${
-                    isAdmin
-                    ?
-                    `<button class="deleteBtn" onclick="deletePlayer(${entry.id})">Delete</button>`
-                    :
-                    ""
-                }
 
             </div>
 
