@@ -12,3 +12,24 @@
   }
 ]
 ```
+
+```json id="tquvto"
+[
+  {
+    "player":"Steve",
+    "gamemode":"Spear",
+    "tier":"HT1"
+  },
+  {
+    "player":"Alex",
+    "gamemode":"Sword",
+    "tier":"LT2"
+  },
+  {
+    "player":"Dream",
+    "gamemode":"Mace",
+    "tier":"HT2"
+  }
+]
+```
+
