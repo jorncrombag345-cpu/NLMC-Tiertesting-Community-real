@@ -1,202 +1,144 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>NLMC Tier Testing</title>
-</head>
-<body>
-    <h1>Welkom bij NLMC Tier Testing</h1>
-    <p>Deze website is gemaakt met GitHub Pages.</p>
-</body>
-</html>
-
-<!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NL Tier Test Calculator</title>
+<title>NL Tier Testing</title>
 
 <style>
 body{
-    font-family: Arial, sans-serif;
+    font-family:Arial,sans-serif;
     background:#121212;
     color:white;
     text-align:center;
     padding:20px;
 }
 
-h1{
-    color:#55ff55;
-}
-
-.box{
-    background:#1e1e1e;
-    max-width:600px;
+.container{
+    max-width:700px;
     margin:auto;
-    padding:20px;
-    border-radius:15px;
 }
 
-select{
-    width:200px;
-    padding:8px;
+input, select, button{
+    padding:10px;
+    margin:5px;
+}
+
+.player{
+    background:#222;
+    padding:10px;
     margin:10px;
-    font-size:16px;
-}
-
-button{
-    padding:12px 25px;
-    font-size:18px;
-    border:none;
     border-radius:10px;
-    cursor:pointer;
-}
-
-#result{
-    margin-top:20px;
-    font-size:24px;
 }
 </style>
 </head>
 <body>
 
-<h1>NL Tier Test Calculator</h1>
+<div class="container">
 
-<div class="box">
+<h1>NL Tier Testing</h1>
 
-<h3>Crystal</h3>
-<select class="tier">
-<option value="1">LT5</option>
-<option value="2">HT5</option>
-<option value="3">LT4</option>
-<option value="4">HT4</option>
-<option value="5">LT3</option>
-<option value="6">HT3</option>
-<option value="7">LT2</option>
-<option value="8">HT2</option>
-<option value="9">LT1</option>
-<option value="10">HT1</option>
+<h2>Admin Login</h2>
+
+<input type="password" id="password" placeholder="Admin wachtwoord">
+<button onclick="login()">Login</button>
+
+<div id="adminPanel" style="display:none;">
+
+<h2>Tier toevoegen</h2>
+
+<input type="text" id="playerName" placeholder="Spelernaam">
+
+<select id="gamemode">
+<option>Spear</option>
+<option>Mace</option>
+<option>Sword</option>
+<option>UHC</option>
+<option>Speed</option>
+<option>Axe</option>
+<option>Vanilla</option>
 </select>
 
-<h3>Sword</h3>
-<select class="tier">
-<option value="1">LT5</option>
-<option value="2">HT5</option>
-<option value="3">LT4</option>
-<option value="4">HT4</option>
-<option value="5">LT3</option>
-<option value="6">HT3</option>
-<option value="7">LT2</option>
-<option value="8">HT2</option>
-<option value="9">LT1</option>
-<option value="10">HT1</option>
+<select id="tier">
+<option>LT5</option>
+<option>HT5</option>
+<option>LT4</option>
+<option>HT4</option>
+<option>LT3</option>
+<option>HT3</option>
+<option>LT2</option>
+<option>HT2</option>
+<option>LT1</option>
+<option>HT1</option>
 </select>
 
-<h3>Axe</h3>
-<select class="tier">
-<option value="1">LT5</option>
-<option value="2">HT5</option>
-<option value="3">LT4</option>
-<option value="4">HT4</option>
-<option value="5">LT3</option>
-<option value="6">HT3</option>
-<option value="7">LT2</option>
-<option value="8">HT2</option>
-<option value="9">LT1</option>
-<option value="10">HT1</option>
-</select>
+<button onclick="addPlayer()">Opslaan</button>
 
-<h3>Mace</h3>
-<select class="tier">
-<option value="1">LT5</option>
-<option value="2">HT5</option>
-<option value="3">LT4</option>
-<option value="4">HT4</option>
-<option value="5">LT3</option>
-<option value="6">HT3</option>
-<option value="7">LT2</option>
-<option value="8">HT2</option>
-<option value="9">LT1</option>
-<option value="10">HT1</option>
-</select>
+</div>
 
-<h3>SMP</h3>
-<select class="tier">
-<option value="1">LT5</option>
-<option value="2">HT5</option>
-<option value="3">LT4</option>
-<option value="4">HT4</option>
-<option value="5">LT3</option>
-<option value="6">HT3</option>
-<option value="7">LT2</option>
-<option value="8">HT2</option>
-<option value="9">LT1</option>
-<option value="10">HT1</option>
-</select>
-
-<h3>UHC</h3>
-<select class="tier">
-<option value="1">LT5</option>
-<option value="2">HT5</option>
-<option value="3">LT4</option>
-<option value="4">HT4</option>
-<option value="5">LT3</option>
-<option value="6">HT3</option>
-<option value="7">LT2</option>
-<option value="8">HT2</option>
-<option value="9">LT1</option>
-<option value="10">HT1</option>
-</select>
-
-<h3>Pot</h3>
-<select class="tier">
-<option value="1">LT5</option>
-<option value="2">HT5</option>
-<option value="3">LT4</option>
-<option value="4">HT4</option>
-<option value="5">LT3</option>
-<option value="6">HT3</option>
-<option value="7">LT2</option>
-<option value="8">HT2</option>
-<option value="9">LT1</option>
-<option value="10">HT1</option>
-</select>
-
-<br><br>
-
-<button onclick="bereken()">Bereken</button>
-
-<div id="result"></div>
+<h2>Leaderboard</h2>
+<div id="leaderboard"></div>
 
 </div>
 
 <script>
-function bereken(){
-    let totaal = 0;
 
-    document.querySelectorAll(".tier").forEach(select=>{
-        totaal += Number(select.value);
+const ADMIN_PASSWORD = "1234"; // verander dit
+
+function login(){
+    const pass = document.getElementById("password").value;
+
+    if(pass === ADMIN_PASSWORD){
+        document.getElementById("adminPanel").style.display = "block";
+        alert("Ingelogd!");
+    } else {
+        alert("Verkeerd wachtwoord");
+    }
+}
+
+function addPlayer(){
+
+    const player = document.getElementById("playerName").value;
+    const gamemode = document.getElementById("gamemode").value;
+    const tier = document.getElementById("tier").value;
+
+    if(player === "") return;
+
+    let data = JSON.parse(localStorage.getItem("tiers") || "[]");
+
+    data.push({
+        player,
+        gamemode,
+        tier
     });
 
-    let rank = "";
+    localStorage.setItem("tiers", JSON.stringify(data));
 
-    if(totaal >= 65){
-        rank = "🏆 Elite";
-    } else if(totaal >= 50){
-        rank = "💎 Diamond";
-    } else if(totaal >= 35){
-        rank = "🥇 Gold";
-    } else if(totaal >= 20){
-        rank = "🥈 Silver";
-    } else {
-        rank = "🥉 Bronze";
-    }
-
-    document.getElementById("result").innerHTML =
-        Totale Score: ${totaal}<br>Rank: ${rank};
+    renderLeaderboard();
 }
+
+function renderLeaderboard(){
+
+    const board = document.getElementById("leaderboard");
+
+    let data = JSON.parse(localStorage.getItem("tiers") || "[]");
+
+    board.innerHTML = "";
+
+    data.forEach(entry => {
+
+        board.innerHTML += `
+            <div class="player">
+                <b>${entry.player}</b><br>
+                ${entry.gamemode} - ${entry.tier}
+            </div>
+        `;
+    });
+}
+
+renderLeaderboard();
+
 </script>
 
 </body>
 </html>
-
