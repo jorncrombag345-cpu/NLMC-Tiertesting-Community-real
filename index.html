@@ -19,13 +19,13 @@ body{
 }
 
 .container{
-    max-width:800px;
+    max-width:900px;
     margin:auto;
 }
 
 h1{
     color:#55ff55;
-    font-size:40px;
+    font-size:42px;
     text-shadow:2px 2px black;
 }
 
@@ -58,7 +58,7 @@ button:hover{
 }
 
 .rank{
-    font-size:22px;
+    font-size:24px;
     font-weight:bold;
 }
 
@@ -73,6 +73,20 @@ button:hover{
     padding:20px;
     border-radius:15px;
     margin-bottom:20px;
+}
+
+.filterButtons{
+    margin-bottom:20px;
+}
+
+.filterButtons button{
+    background:#333;
+    color:white;
+}
+
+.filterButtons button:hover{
+    background:#55ff55;
+    color:black;
 }
 
 </style>
@@ -125,6 +139,21 @@ button:hover{
 
 </div>
 
+<h2>Gamemode Filter</h2>
+
+<div class="filterButtons">
+
+<button onclick="filterMode('ALL')">All</button>
+<button onclick="filterMode('Spear')">Spear</button>
+<button onclick="filterMode('Mace')">Mace</button>
+<button onclick="filterMode('Sword')">Sword</button>
+<button onclick="filterMode('UHC')">UHC</button>
+<button onclick="filterMode('Speed')">Speed</button>
+<button onclick="filterMode('Axe')">Axe</button>
+<button onclick="filterMode('Vanilla')">Vanilla</button>
+
+</div>
+
 <h2>Leaderboard</h2>
 
 <div id="leaderboard"></div>
@@ -150,6 +179,8 @@ const tierRank = {
 
 let isAdmin = false;
 
+let currentFilter = "ALL";
+
 function login(){
 
     const pass = document.getElementById("password").value;
@@ -169,6 +200,13 @@ function login(){
         alert("Verkeerd wachtwoord");
 
     }
+}
+
+function filterMode(mode){
+
+    currentFilter = mode;
+
+    renderLeaderboard();
 }
 
 function addPlayer(){
@@ -216,6 +254,10 @@ function renderLeaderboard(){
     board.innerHTML = "";
 
     data.forEach((entry,index) => {
+
+        if(currentFilter !== "ALL" && entry.gamemode !== currentFilter){
+            return;
+        }
 
         board.innerHTML += `
             <div class="player">
