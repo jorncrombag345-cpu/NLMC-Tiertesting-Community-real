@@ -1,4 +1,4 @@
-```html id="u7z9qx"
+```html id="ultimatev7"
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -6,113 +6,810 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NL Tier Testing</title>
+<title>NL Tiers</title>
 
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
 
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
 body{
-    font-family:Arial,sans-serif;
-    background:#121212;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin:0;
+
+font-family:'Inter',sans-serif;
+
+background:
+linear-gradient(
+180deg,
+#050816,
+#0a1020,
+#050816
+);
+
+color:white;
+
+overflow-x:hidden;
+
+min-height:100vh;
 }
 
-.container{
-    max-width:1000px;
-    margin:auto;
+/* BACKGROUND */
+
+.bg{
+
+position:fixed;
+
+inset:0;
+
+overflow:hidden;
+
+z-index:-3;
 }
 
-h1{
-    color:#55ff55;
-    font-size:42px;
-    text-shadow:2px 2px black;
+.glow1{
+
+position:absolute;
+
+width:750px;
+height:750px;
+
+background:#00ff88;
+
+filter:blur(240px);
+
+opacity:0.08;
+
+border-radius:50%;
+
+top:-350px;
+left:-250px;
 }
+
+.glow2{
+
+position:absolute;
+
+width:750px;
+height:750px;
+
+background:#7b5cff;
+
+filter:blur(240px);
+
+opacity:0.08;
+
+border-radius:50%;
+
+bottom:-350px;
+right:-250px;
+}
+
+.grid{
+
+position:fixed;
+
+inset:0;
+
+background-image:
+linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+background-size:55px 55px;
+
+z-index:-2;
+}
+
+/* NAVBAR */
+
+.nav{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:35px 60px;
+}
+
+.logo{
+
+font-size:48px;
+
+font-weight:900;
+
+letter-spacing:-3px;
+}
+
+.logo span{
+
+color:#00ff88;
+}
+
+.navRight{
+
+display:flex;
+
+gap:14px;
+}
+
+.navRight input{
+
+background:
+rgba(255,255,255,0.05);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+padding:15px 18px;
+
+border-radius:18px;
+
+color:white;
+
+outline:none;
+
+width:180px;
+}
+
+.navRight button{
+
+border:none;
+
+padding:15px 24px;
+
+border-radius:18px;
+
+background:
+linear-gradient(
+135deg,
+#00ff88,
+#00d0ff
+);
+
+font-weight:800;
+
+cursor:pointer;
+
+color:black;
+
+transition:0.25s;
+}
+
+.navRight button:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+0 12px 30px rgba(0,255,136,0.25);
+}
+
+/* HERO */
+
+.hero{
+
+text-align:center;
+
+margin-top:10px;
+}
+
+.hero h1{
+
+font-size:120px;
+
+font-weight:900;
+
+letter-spacing:-6px;
+
+line-height:1;
+
+background:
+linear-gradient(
+90deg,
+white,
+#a7e9ff
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+
+margin-top:18px;
+
+font-size:22px;
+
+color:#8d96aa;
+}
+
+/* SEARCH */
+
+.searchContainer{
+
+max-width:720px;
+
+margin:45px auto;
+
+padding:0 20px;
+}
+
+.searchContainer input{
+
+width:100%;
+
+padding:24px;
+
+border-radius:28px;
+
+font-size:18px;
+
+background:
+rgba(255,255,255,0.05);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+color:white;
+
+outline:none;
+
+backdrop-filter:blur(20px);
+
+transition:0.25s;
+}
+
+.searchContainer input:focus{
+
+border:
+1px solid rgba(0,255,136,0.4);
+
+box-shadow:
+0 0 35px rgba(0,255,136,0.15);
+}
+
+/* FILTERS */
+
+.filters{
+
+display:flex;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:12px;
+
+padding:0 20px;
+
+margin-bottom:40px;
+}
+
+.filters button{
+
+border:none;
+
+padding:13px 18px;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,0.05);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+color:white;
+
+cursor:pointer;
+
+font-weight:700;
+
+transition:0.25s;
+}
+
+.filters button:hover{
+
+background:#00ff88;
+
+color:black;
+
+transform:translateY(-3px);
+}
+
+/* ADMIN PANEL */
+
+.adminPanel{
+
+display:none;
+
+width:95%;
+
+max-width:1350px;
+
+margin:auto;
+
+margin-bottom:40px;
+
+padding:28px;
+
+border-radius:36px;
+
+background:
+rgba(255,255,255,0.05);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+backdrop-filter:blur(20px);
+}
+
+.adminGrid{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:14px;
+
+justify-content:center;
+}
+
+.adminGrid input,
+.adminGrid select{
+
+padding:14px 16px;
+
+border-radius:18px;
+
+background:#111827;
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+color:white;
+
+outline:none;
+}
+
+.adminGrid button{
+
+border:none;
+
+padding:14px 24px;
+
+border-radius:18px;
+
+background:#00ff88;
+
+font-weight:800;
+
+cursor:pointer;
+}
+
+/* LEADERBOARD */
+
+#leaderboard{
+
+max-width:1500px;
+
+margin:auto;
+
+padding:0 25px 60px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:24px;
+}
+
+/* PLAYER */
 
 .player{
-    background:#1e1e1e;
-    padding:15px;
-    margin:15px;
-    border-radius:12px;
-    border-left:8px solid #55ff55;
-    box-shadow:0 0 10px rgba(0,0,0,0.5);
+
+position:relative;
+
+overflow:hidden;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:30px;
+
+border-radius:40px;
+
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,0.07),
+rgba(255,255,255,0.03)
+);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+backdrop-filter:blur(18px);
+
+cursor:pointer;
+
+transition:0.3s;
+}
+
+.player::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:
+linear-gradient(
+90deg,
+rgba(0,255,136,0.08),
+transparent
+);
+
+opacity:0;
+
+transition:0.3s;
+}
+
+.player:hover::before{
+
+opacity:1;
+}
+
+.player:hover{
+
+transform:
+translateY(-6px)
+scale(1.01);
+
+box-shadow:
+0 25px 55px rgba(0,0,0,0.35);
+}
+
+.left{
+
+display:flex;
+
+align-items:center;
+
+gap:22px;
 }
 
 .rank{
-    font-size:28px;
-    font-weight:bold;
-    margin-bottom:10px;
+
+width:84px;
+height:84px;
+
+border-radius:28px;
+
+background:
+linear-gradient(
+135deg,
+#ffd54f,
+#ff9800
+);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:32px;
+
+font-weight:900;
+
+color:black;
 }
 
-.total{
-    color:#55ff55;
-    font-size:20px;
-    margin-bottom:10px;
+.avatar{
+
+width:95px;
+height:95px;
+
+border-radius:32px;
+
+background:
+linear-gradient(
+135deg,
+#00ff88,
+#00d0ff
+);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:38px;
+
+font-weight:900;
+
+color:black;
 }
 
-button,input,select{
-    padding:12px;
-    margin:5px;
-    border:none;
-    border-radius:8px;
-    font-size:16px;
+.playerInfo h2{
+
+font-size:42px;
+
+font-weight:900;
 }
 
-button{
-    background:#55ff55;
-    color:black;
-    cursor:pointer;
-    font-weight:bold;
+.playerInfo p{
+
+margin-top:6px;
+
+color:#8d96aa;
 }
 
-button:hover{
-    opacity:0.9;
+.points{
+
+text-align:right;
 }
 
-.filterButtons{
-    margin-bottom:20px;
+.points h3{
+
+font-size:56px;
+
+font-weight:900;
+
+color:#00ff88;
 }
 
-.filterButtons button{
-    background:#333;
-    color:white;
+.points p{
+
+color:#8d96aa;
 }
 
-.filterButtons button:hover{
-    background:#55ff55;
-    color:black;
+/* MODAL */
+
+.modal{
+
+position:fixed;
+
+inset:0;
+
+background:
+rgba(0,0,0,0.72);
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+backdrop-filter:blur(12px);
+
+z-index:999;
 }
 
-.adminBox{
-    background:#1a1a1a;
-    padding:20px;
-    border-radius:15px;
-    margin-bottom:20px;
+.modalContent{
+
+width:92%;
+
+max-width:780px;
+
+padding:44px;
+
+border-radius:44px;
+
+background:
+linear-gradient(
+145deg,
+#101827,
+#0a0f18
+);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+animation:popup 0.25s ease;
+}
+
+@keyframes popup{
+
+from{
+opacity:0;
+transform:scale(0.9);
+}
+
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+.modalTop{
+
+text-align:center;
+
+margin-bottom:34px;
+}
+
+.bigAvatar{
+
+width:145px;
+height:145px;
+
+border-radius:42px;
+
+margin:auto;
+
+background:
+linear-gradient(
+135deg,
+#00ff88,
+#00d0ff
+);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:60px;
+
+font-weight:900;
+
+color:black;
+
+margin-bottom:20px;
+}
+
+.modalName{
+
+font-size:66px;
+
+font-weight:900;
+}
+
+.totalPoints{
+
+margin-top:12px;
+
+font-size:24px;
+
+color:#00ff88;
+
+font-weight:700;
+}
+
+/* TIER GRID */
+
+.tierGrid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(150px,1fr));
+
+gap:18px;
+}
+
+.tierCard{
+
+padding:24px;
+
+border-radius:30px;
+
+background:
+rgba(255,255,255,0.04);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+text-align:center;
+
+transition:0.25s;
+}
+
+.tierCard:hover{
+
+transform:translateY(-4px);
+}
+
+.icon{
+
+font-size:36px;
 }
 
 .mode{
-    margin:5px;
-    padding:8px;
-    background:#2a2a2a;
-    border-radius:8px;
+
+margin-top:10px;
+
+color:#8d96aa;
 }
 
-.deleteBtn{
-    background:red;
-    color:white;
-    margin-left:10px;
+.tier{
+
+margin-top:8px;
+
+font-size:36px;
+
+font-weight:900;
+
+color:#00ff88;
 }
 
-.searchBox{
-    margin:20px;
+.pts{
+
+margin-top:8px;
+
+color:#ffc107;
 }
 
-.searchBox input{
-    width:300px;
-    max-width:90%;
+.closeBtn{
+
+width:100%;
+
+margin-top:34px;
+
+border:none;
+
+padding:18px;
+
+border-radius:22px;
+
+font-size:17px;
+
+font-weight:900;
+
+cursor:pointer;
+
+background:
+linear-gradient(
+135deg,
+#00ff88,
+#00d0ff
+);
+
+color:black;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+.hero h1{
+font-size:68px;
+}
+
+.player{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:20px;
+}
+
+.points{
+text-align:left;
+}
+
+.nav{
+
+flex-direction:column;
+
+gap:20px;
+}
 }
 
 </style>
@@ -120,36 +817,78 @@ button:hover{
 </head>
 <body>
 
-<div class="container">
+<div class="bg">
 
-<h1>NL Tier Testing</h1>
+<div class="glow1"></div>
+<div class="glow2"></div>
 
-<div class="adminBox">
+</div>
 
-<h2>Admin Login</h2>
+<div class="grid"></div>
 
-<input type="password" id="password" placeholder="Admin wachtwoord">
+<div class="nav">
 
-<button onclick="login()">Login</button>
+<div class="logo">
+NL<span>TIERS</span>
+</div>
 
-<div id="adminPanel" style="display:none;">
+<div class="navRight">
 
-<h2>Speler toevoegen</h2>
+<input
+type="password"
+id="password"
+placeholder="Admin code"
+>
 
-<input type="text" id="playerName" placeholder="Spelernaam">
+<button onclick="login()">
+Login
+</button>
+
+</div>
+
+</div>
+
+<div class="hero">
+
+<h1>Leaderboard</h1>
+
+<p>Best Minecraft Competitive Players</p>
+
+</div>
+
+<div class="searchContainer">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search player..."
+onkeyup="loadPlayers()"
+>
+
+</div>
+
+<div class="adminPanel" id="adminPanel">
+
+<div class="adminGrid">
+
+<input
+type="text"
+id="playerName"
+placeholder="Player Name"
+>
 
 <select id="gamemode">
 
-<option>Spear</option>
-<option>Mace</option>
-<option>Sword</option>
-<option>UHC</option>
-<option>Speed</option>
-<option>Axe</option>
-<option>Vanilla</option>
-<option>DIA SMP</option>
-<option>Cart</option>
-<option>Creeper</option>
+<option>⚔️ Sword</option>
+<option>🔨 Mace</option>
+<option>🏹 UHC</option>
+<option>🪓 Axe</option>
+<option>💨 Speed</option>
+<option>🛡️ Vanilla</option>
+<option>💎 DIA SMP</option>
+<option>🛒 Cart</option>
+<option>💣 Creeper</option>
+<option>🗡️ Spear</option>
 
 </select>
 
@@ -168,226 +907,363 @@ button:hover{
 
 </select>
 
-<button onclick="addPlayer()">Opslaan</button>
+<button onclick="addPlayer()">
+Add Tier
+</button>
 
 </div>
 
 </div>
 
-<div class="searchBox">
+<div class="filters">
 
-<h2>Zoek speler</h2>
+<button onclick="filterMode('ALL')">ALL</button>
 
-<input type="text" id="searchInput" placeholder="Zoek speler..." onkeyup="loadPlayers()">
+<button onclick="filterMode('🔨 Mace')">
+🔨 MACE
+</button>
+
+<button onclick="filterMode('⚔️ Sword')">
+⚔️ SWORD
+</button>
+
+<button onclick="filterMode('🗡️ Spear')">
+🗡️ SPEAR
+</button>
+
+<button onclick="filterMode('🏹 UHC')">
+🏹 UHC
+</button>
+
+<button onclick="filterMode('🪓 Axe')">
+🪓 AXE
+</button>
+
+<button onclick="filterMode('💨 Speed')">
+💨 SPEED
+</button>
+
+<button onclick="filterMode('🛡️ Vanilla')">
+🛡️ VANILLA
+</button>
+
+<button onclick="filterMode('💎 DIA SMP')">
+💎 DIA SMP
+</button>
+
+<button onclick="filterMode('🛒 Cart')">
+🛒 CART
+</button>
+
+<button onclick="filterMode('💣 Creeper')">
+💣 CREEPER
+</button>
 
 </div>
-
-<h2>Gamemode Filter</h2>
-
-<div class="filterButtons">
-
-<button onclick="filterMode('ALL')">All</button>
-<button onclick="filterMode('Spear')">Spear</button>
-<button onclick="filterMode('Mace')">Mace</button>
-<button onclick="filterMode('Sword')">Sword</button>
-<button onclick="filterMode('UHC')">UHC</button>
-<button onclick="filterMode('Speed')">Speed</button>
-<button onclick="filterMode('Axe')">Axe</button>
-<button onclick="filterMode('Vanilla')">Vanilla</button>
-<button onclick="filterMode('DIA SMP')">DIA SMP</button>
-<button onclick="filterMode('Cart')">Cart</button>
-<button onclick="filterMode('Creeper')">Creeper</button>
-
-</div>
-
-<h2>Leaderboard</h2>
 
 <div id="leaderboard"></div>
+
+<div class="modal" id="modal">
+
+<div class="modalContent">
+
+<div class="modalTop">
+
+<div class="bigAvatar" id="bigAvatar">
+A
+</div>
+
+<div class="modalName" id="modalName">
+Player
+</div>
+
+<div class="totalPoints" id="totalPoints">
+0 Points
+</div>
+
+</div>
+
+<div class="tierGrid" id="modalStats"></div>
+
+<button class="closeBtn" onclick="closeModal()">
+Close
+</button>
+
+</div>
 
 </div>
 
 <script>
 
-const SUPABASE_URL = "https://mgtwbthpqinyxrcnglwt.supabase.co";
+const SUPABASE_URL =
+"https://mgtwbthpqinyxrcnglwt.supabase.co";
 
-const SUPABASE_KEY = "sb_publishable_kj1HG03vn4ZMqDgC8zWzhA_CRNDty9O";
+const SUPABASE_KEY =
+"sb_publishable_kj1HG03vn4ZMqDgC8zWzhA_CRNDty9O";
 
-const supabaseClient = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
+const supabaseClient =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
 );
 
 const ADMIN_PASSWORD = "5676";
 
 const tierRank = {
 
-    "LT5":1,
-    "HT5":2,
-    "LT4":5,
-    "HT4":10,
-    "LT3":12,
-    "HT3":15,
-    "LT2":18,
-    "HT2":20,
-    "LT1":25,
-    "HT1":30
-
+"LT5":1,
+"HT5":2,
+"LT4":5,
+"HT4":10,
+"LT3":12,
+"HT3":15,
+"LT2":18,
+"HT2":20,
+"LT1":25,
+"HT1":30
 };
 
 let currentFilter = "ALL";
 
-let isAdmin = false;
+let allData = [];
 
 function login(){
 
-    const pass = document.getElementById("password").value;
+const pass =
+document.getElementById("password").value;
 
-    if(pass === ADMIN_PASSWORD){
+if(pass === ADMIN_PASSWORD){
 
-        isAdmin = true;
+document
+.getElementById("adminPanel")
+.style.display = "block";
 
-        document.getElementById("adminPanel").style.display = "block";
+alert("Admin login success");
 
-        alert("Ingelogd!");
+}else{
 
-        loadPlayers();
-
-    }else{
-
-        alert("Verkeerd wachtwoord");
-
-    }
+alert("Wrong password");
+}
 }
 
 function filterMode(mode){
 
-    currentFilter = mode;
+currentFilter = mode;
 
-    loadPlayers();
+loadPlayers();
 }
 
 async function addPlayer(){
 
-    const player = document.getElementById("playerName").value;
+const player =
+document.getElementById("playerName").value;
 
-    const gamemode = document.getElementById("gamemode").value;
+const gamemode =
+document.getElementById("gamemode").value;
 
-    const tier = document.getElementById("tier").value;
+const tier =
+document.getElementById("tier").value;
 
-    if(player === "") return;
+if(player === "") return;
 
-    await supabaseClient
-    .from("players")
-    .insert([
-        {
-            player: player,
-            gamemode: gamemode,
-            tier: tier
-        }
-    ]);
+await supabaseClient
+.from("players")
+.insert([
+{
+player,
+gamemode,
+tier
+}
+]);
 
-    document.getElementById("playerName").value = "";
+document
+.getElementById("playerName")
+.value = "";
 
-    loadPlayers();
+loadPlayers();
 }
 
-async function deleteTier(id){
+function getAvatar(name){
 
-    await supabaseClient
-    .from("players")
-    .delete()
-    .eq("id", id);
-
-    loadPlayers();
+return name.charAt(0).toUpperCase();
 }
 
 async function loadPlayers(){
 
-    const { data, error } = await supabaseClient
-    .from("players")
-    .select("*");
+const search =
+document
+.getElementById("searchInput")
+.value
+.toLowerCase();
 
-    if(error){
+const { data,error } =
+await supabaseClient
+.from("players")
+.select("*");
 
-        console.log(error);
+if(error){
 
-        return;
-    }
+console.log(error);
 
-    const board = document.getElementById("leaderboard");
+return;
+}
 
-    board.innerHTML = "";
+allData = data;
 
-    let search = document.getElementById("searchInput").value.toLowerCase();
+const board =
+document.getElementById("leaderboard");
 
-    let groupedPlayers = {};
+board.innerHTML = "";
 
-    data.forEach(entry => {
+let grouped = {};
 
-        if(currentFilter !== "ALL" && entry.gamemode !== currentFilter){
-            return;
-        }
+data.forEach(entry=>{
 
-        if(!entry.player.toLowerCase().includes(search)){
-            return;
-        }
+if(
+currentFilter !== "ALL" &&
+entry.gamemode !== currentFilter
+){
+return;
+}
 
-        if(!groupedPlayers[entry.player]){
+if(
+!entry.player
+.toLowerCase()
+.includes(search)
+){
+return;
+}
 
-            groupedPlayers[entry.player] = {
-                total:0,
-                modes:[]
-            };
-        }
+if(!grouped[entry.player]){
 
-        groupedPlayers[entry.player].total += tierRank[entry.tier];
+grouped[entry.player] = {
+points:0
+};
+}
 
-        groupedPlayers[entry.player].modes.push(
-            `
-            <div class="mode">
+grouped[entry.player].points +=
+tierRank[entry.tier];
+});
 
-                ${entry.gamemode} • ${entry.tier} • ${tierRank[entry.tier]} punten
+let sorted =
+Object.entries(grouped);
 
-                ${
-                    isAdmin
-                    ?
-                    `<button class="deleteBtn" onclick="deleteTier(${entry.id})">❌</button>`
-                    :
-                    ""
-                }
+sorted.sort(
+(a,b)=>
+b[1].points-a[1].points
+);
 
-            </div>
-            `
-        );
+sorted.forEach(([player,info],index)=>{
 
-    });
+board.innerHTML += `
 
-    let sortedPlayers = Object.entries(groupedPlayers);
+<div
+class="player"
+onclick="openPlayer('${player}')"
+>
 
-    sortedPlayers.sort((a,b) => b[1].total - a[1].total);
+<div class="left">
 
-    sortedPlayers.forEach(([player, info]) => {
+<div class="rank">
+#${index+1}
+</div>
 
-        board.innerHTML += `
+<div class="avatar">
+${getAvatar(player)}
+</div>
 
-            <div class="player">
+<div class="playerInfo">
 
-                <div class="rank">
-                    ${player}
-                </div>
+<h2>${player}</h2>
 
-                <div class="total">
-                    ⭐ ${info.total} punten totaal
-                </div>
+<p>Competitive Minecraft Player</p>
 
-                <div>
-                    ${info.modes.join("")}
-                </div>
+</div>
 
-            </div>
+</div>
 
-        `;
-    });
+<div class="points">
+
+<h3>${info.points}</h3>
+
+<p>Total Points</p>
+
+</div>
+
+</div>
+
+`;
+});
+}
+
+function openPlayer(player){
+
+document
+.getElementById("modal")
+.style.display = "flex";
+
+document
+.getElementById("modalName")
+.innerHTML = player;
+
+document
+.getElementById("bigAvatar")
+.innerHTML =
+getAvatar(player);
+
+const stats =
+allData.filter(
+x=>x.player===player
+);
+
+let total = 0;
+
+let html = "";
+
+stats.forEach(entry=>{
+
+total += tierRank[entry.tier];
+
+html += `
+
+<div class="tierCard">
+
+<div class="icon">
+${entry.gamemode.split(" ")[0]}
+</div>
+
+<div class="mode">
+${entry.gamemode}
+</div>
+
+<div class="tier">
+${entry.tier}
+</div>
+
+<div class="pts">
+${tierRank[entry.tier]} pts
+</div>
+
+</div>
+
+`;
+});
+
+document
+.getElementById("totalPoints")
+.innerHTML =
+total + " Total Points";
+
+document
+.getElementById("modalStats")
+.innerHTML = html;
+}
+
+function closeModal(){
+
+document
+.getElementById("modal")
+.style.display = "none";
 }
 
 loadPlayers();
