@@ -1,4 +1,3 @@
-```html id="ultimatev7"
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -21,766 +20,359 @@ box-sizing:border-box;
 }
 
 body{
-
 font-family:'Inter',sans-serif;
-
-background:
-linear-gradient(
-180deg,
-#050816,
-#0a1020,
-#050816
-);
-
+background:#070b14;
 color:white;
-
 overflow-x:hidden;
-
 min-height:100vh;
 }
 
 /* BACKGROUND */
 
-.bg{
-
+.bg1,.bg2{
 position:fixed;
-
-inset:0;
-
-overflow:hidden;
-
-z-index:-3;
+width:700px;
+height:700px;
+border-radius:50%;
+filter:blur(200px);
+z-index:-1;
 }
 
-.glow1{
-
-position:absolute;
-
-width:750px;
-height:750px;
-
+.bg1{
 background:#00ff88;
-
-filter:blur(240px);
-
+top:-300px;
+left:-300px;
 opacity:0.08;
-
-border-radius:50%;
-
-top:-350px;
-left:-250px;
 }
 
-.glow2{
-
-position:absolute;
-
-width:750px;
-height:750px;
-
+.bg2{
 background:#7b5cff;
-
-filter:blur(240px);
-
+bottom:-300px;
+right:-300px;
 opacity:0.08;
-
-border-radius:50%;
-
-bottom:-350px;
-right:-250px;
 }
 
-.grid{
-
-position:fixed;
-
-inset:0;
-
-background-image:
-linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-
-background-size:55px 55px;
-
-z-index:-2;
-}
-
-/* NAVBAR */
+/* NAV */
 
 .nav{
-
 display:flex;
-
 justify-content:space-between;
-
 align-items:center;
-
-padding:35px 60px;
+padding:30px 50px;
 }
 
 .logo{
-
-font-size:48px;
-
+font-size:46px;
 font-weight:900;
-
-letter-spacing:-3px;
 }
 
 .logo span{
-
 color:#00ff88;
 }
 
 .navRight{
-
 display:flex;
-
-gap:14px;
+gap:12px;
 }
 
 .navRight input{
-
-background:
-rgba(255,255,255,0.05);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
-padding:15px 18px;
-
-border-radius:18px;
-
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+padding:14px;
+border-radius:16px;
 color:white;
-
 outline:none;
-
-width:180px;
 }
 
 .navRight button{
-
 border:none;
-
-padding:15px 24px;
-
-border-radius:18px;
-
-background:
-linear-gradient(
-135deg,
-#00ff88,
-#00d0ff
-);
-
+background:linear-gradient(135deg,#00ff88,#00d0ff);
+padding:14px 22px;
+border-radius:16px;
 font-weight:800;
-
 cursor:pointer;
-
-color:black;
-
-transition:0.25s;
-}
-
-.navRight button:hover{
-
-transform:translateY(-4px);
-
-box-shadow:
-0 12px 30px rgba(0,255,136,0.25);
 }
 
 /* HERO */
 
 .hero{
-
 text-align:center;
-
-margin-top:10px;
+margin-top:20px;
 }
 
 .hero h1{
-
-font-size:120px;
-
+font-size:110px;
 font-weight:900;
-
-letter-spacing:-6px;
-
-line-height:1;
-
-background:
-linear-gradient(
-90deg,
-white,
-#a7e9ff
-);
-
+background:linear-gradient(90deg,white,#9ee7ff);
 -webkit-background-clip:text;
-
 -webkit-text-fill-color:transparent;
 }
 
 .hero p{
-
-margin-top:18px;
-
-font-size:22px;
-
+margin-top:12px;
+font-size:20px;
 color:#8d96aa;
 }
 
 /* SEARCH */
 
-.searchContainer{
-
-max-width:720px;
-
-margin:45px auto;
-
+.searchBox{
+max-width:700px;
+margin:40px auto;
 padding:0 20px;
 }
 
-.searchContainer input{
-
+.searchBox input{
 width:100%;
-
-padding:24px;
-
-border-radius:28px;
-
-font-size:18px;
-
-background:
-rgba(255,255,255,0.05);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
+padding:22px;
+border-radius:24px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
 color:white;
-
+font-size:18px;
 outline:none;
-
-backdrop-filter:blur(20px);
-
-transition:0.25s;
-}
-
-.searchContainer input:focus{
-
-border:
-1px solid rgba(0,255,136,0.4);
-
-box-shadow:
-0 0 35px rgba(0,255,136,0.15);
 }
 
 /* FILTERS */
 
 .filters{
-
 display:flex;
-
 flex-wrap:wrap;
-
 justify-content:center;
-
 gap:12px;
-
 padding:0 20px;
-
 margin-bottom:40px;
 }
 
 .filters button{
-
-border:none;
-
-padding:13px 18px;
-
-border-radius:18px;
-
-background:
-rgba(255,255,255,0.05);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
 color:white;
-
+padding:12px 18px;
+border-radius:16px;
 cursor:pointer;
-
 font-weight:700;
-
 transition:0.25s;
 }
 
 .filters button:hover{
-
 background:#00ff88;
-
 color:black;
-
-transform:translateY(-3px);
 }
 
 /* ADMIN PANEL */
 
 .adminPanel{
-
 display:none;
-
 width:95%;
-
-max-width:1350px;
-
+max-width:1300px;
 margin:auto;
-
-margin-bottom:40px;
-
-padding:28px;
-
-border-radius:36px;
-
-background:
-rgba(255,255,255,0.05);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
-backdrop-filter:blur(20px);
+margin-bottom:35px;
+padding:25px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:30px;
 }
 
 .adminGrid{
-
 display:flex;
-
 flex-wrap:wrap;
-
-gap:14px;
-
+gap:15px;
 justify-content:center;
 }
 
 .adminGrid input,
 .adminGrid select{
-
-padding:14px 16px;
-
-border-radius:18px;
-
-background:#111827;
-
-border:
-1px solid rgba(255,255,255,0.08);
-
+background:#10151f;
+border:1px solid rgba(255,255,255,0.08);
 color:white;
-
-outline:none;
+padding:14px;
+border-radius:16px;
 }
 
 .adminGrid button{
-
 border:none;
-
-padding:14px 24px;
-
-border-radius:18px;
-
 background:#00ff88;
-
+padding:14px 22px;
+border-radius:16px;
 font-weight:800;
-
 cursor:pointer;
 }
 
 /* LEADERBOARD */
 
 #leaderboard{
-
-max-width:1500px;
-
+width:100%;
+max-width:1450px;
 margin:auto;
-
-padding:0 25px 60px;
-
+padding:0 20px 50px;
 display:flex;
-
 flex-direction:column;
-
-gap:24px;
-}
-
-/* PLAYER */
-
-.player{
-
-position:relative;
-
-overflow:hidden;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:30px;
-
-border-radius:40px;
-
-background:
-linear-gradient(
-145deg,
-rgba(255,255,255,0.07),
-rgba(255,255,255,0.03)
-);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
-backdrop-filter:blur(18px);
-
-cursor:pointer;
-
-transition:0.3s;
-}
-
-.player::before{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-background:
-linear-gradient(
-90deg,
-rgba(0,255,136,0.08),
-transparent
-);
-
-opacity:0;
-
-transition:0.3s;
-}
-
-.player:hover::before{
-
-opacity:1;
-}
-
-.player:hover{
-
-transform:
-translateY(-6px)
-scale(1.01);
-
-box-shadow:
-0 25px 55px rgba(0,0,0,0.35);
-}
-
-.left{
-
-display:flex;
-
-align-items:center;
-
 gap:22px;
 }
 
-.rank{
+/* PLAYER CARD */
 
-width:84px;
-height:84px;
-
-border-radius:28px;
-
-background:
-linear-gradient(
-135deg,
-#ffd54f,
-#ff9800
-);
-
+.player{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+padding:26px;
+border-radius:34px;
 display:flex;
-
-justify-content:center;
-
+justify-content:space-between;
 align-items:center;
+cursor:pointer;
+transition:0.25s;
+}
 
-font-size:32px;
+.player:hover{
+transform:translateY(-5px) scale(1.01);
+}
 
+.left{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.rank{
+width:75px;
+height:75px;
+border-radius:24px;
+background:linear-gradient(135deg,#ffd54f,#ff9800);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:28px;
 font-weight:900;
-
 color:black;
 }
 
 .avatar{
-
-width:95px;
-height:95px;
-
-border-radius:32px;
-
-background:
-linear-gradient(
-135deg,
-#00ff88,
-#00d0ff
-);
-
+width:85px;
+height:85px;
+border-radius:28px;
+background:linear-gradient(135deg,#00ff88,#00d0ff);
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
-font-size:38px;
-
+font-size:34px;
 font-weight:900;
-
 color:black;
 }
 
 .playerInfo h2{
-
-font-size:42px;
-
+font-size:36px;
 font-weight:900;
 }
 
 .playerInfo p{
-
 margin-top:6px;
-
-color:#8d96aa;
+color:#8f98ab;
 }
 
 .points{
-
 text-align:right;
 }
 
 .points h3{
-
-font-size:56px;
-
+font-size:46px;
 font-weight:900;
-
 color:#00ff88;
-}
-
-.points p{
-
-color:#8d96aa;
 }
 
 /* MODAL */
 
 .modal{
-
 position:fixed;
-
 inset:0;
-
-background:
-rgba(0,0,0,0.72);
-
+background:rgba(0,0,0,0.7);
 display:none;
-
 justify-content:center;
-
 align-items:center;
-
-backdrop-filter:blur(12px);
-
+backdrop-filter:blur(10px);
 z-index:999;
 }
 
 .modalContent{
-
 width:92%;
-
-max-width:780px;
-
-padding:44px;
-
-border-radius:44px;
-
-background:
-linear-gradient(
-145deg,
-#101827,
-#0a0f18
-);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
-animation:popup 0.25s ease;
-}
-
-@keyframes popup{
-
-from{
-opacity:0;
-transform:scale(0.9);
-}
-
-to{
-opacity:1;
-transform:scale(1);
-}
+max-width:700px;
+background:linear-gradient(145deg,#111827,#0b0f18);
+padding:40px;
+border-radius:36px;
+border:1px solid rgba(255,255,255,0.08);
 }
 
 .modalTop{
-
 text-align:center;
-
-margin-bottom:34px;
+margin-bottom:30px;
 }
 
 .bigAvatar{
-
-width:145px;
-height:145px;
-
-border-radius:42px;
-
+width:130px;
+height:130px;
+border-radius:36px;
+background:linear-gradient(135deg,#00ff88,#00d0ff);
 margin:auto;
-
-background:
-linear-gradient(
-135deg,
-#00ff88,
-#00d0ff
-);
-
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
-font-size:60px;
-
+font-size:54px;
 font-weight:900;
-
 color:black;
-
-margin-bottom:20px;
+margin-bottom:18px;
 }
 
 .modalName{
-
-font-size:66px;
-
+font-size:56px;
 font-weight:900;
 }
 
 .totalPoints{
-
-margin-top:12px;
-
-font-size:24px;
-
+margin-top:10px;
+font-size:22px;
 color:#00ff88;
-
-font-weight:700;
 }
 
-/* TIER GRID */
-
 .tierGrid{
-
 display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(150px,1fr));
-
+grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
 gap:18px;
 }
 
 .tierCard{
-
-padding:24px;
-
-border-radius:30px;
-
-background:
-rgba(255,255,255,0.04);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
+background:rgba(255,255,255,0.04);
+padding:22px;
+border-radius:24px;
+border:1px solid rgba(255,255,255,0.08);
 text-align:center;
-
-transition:0.25s;
 }
 
-.tierCard:hover{
-
-transform:translateY(-4px);
+.tierMode{
+color:#8f98ab;
 }
 
-.icon{
-
-font-size:36px;
-}
-
-.mode{
-
-margin-top:10px;
-
-color:#8d96aa;
-}
-
-.tier{
-
+.tierRank{
 margin-top:8px;
-
-font-size:36px;
-
+font-size:30px;
 font-weight:900;
-
 color:#00ff88;
 }
 
-.pts{
-
+.tierPoints{
 margin-top:8px;
-
 color:#ffc107;
 }
 
 .closeBtn{
-
 width:100%;
-
-margin-top:34px;
-
+margin-top:30px;
 border:none;
-
-padding:18px;
-
-border-radius:22px;
-
-font-size:17px;
-
+background:linear-gradient(135deg,#00ff88,#00d0ff);
+padding:16px;
+border-radius:18px;
 font-weight:900;
-
 cursor:pointer;
-
-background:
-linear-gradient(
-135deg,
-#00ff88,
-#00d0ff
-);
-
-color:black;
 }
 
 /* MOBILE */
@@ -788,15 +380,12 @@ color:black;
 @media(max-width:850px){
 
 .hero h1{
-font-size:68px;
+font-size:65px;
 }
 
 .player{
-
 flex-direction:column;
-
 align-items:flex-start;
-
 gap:20px;
 }
 
@@ -805,11 +394,10 @@ text-align:left;
 }
 
 .nav{
-
 flex-direction:column;
-
 gap:20px;
 }
+
 }
 
 </style>
@@ -817,14 +405,8 @@ gap:20px;
 </head>
 <body>
 
-<div class="bg">
-
-<div class="glow1"></div>
-<div class="glow2"></div>
-
-</div>
-
-<div class="grid"></div>
+<div class="bg1"></div>
+<div class="bg2"></div>
 
 <div class="nav">
 
@@ -856,7 +438,7 @@ Login
 
 </div>
 
-<div class="searchContainer">
+<div class="searchBox">
 
 <input
 type="text"
@@ -866,6 +448,8 @@ onkeyup="loadPlayers()"
 >
 
 </div>
+
+<!-- ADMIN -->
 
 <div class="adminPanel" id="adminPanel">
 
@@ -879,16 +463,16 @@ placeholder="Player Name"
 
 <select id="gamemode">
 
-<option>⚔️ Sword</option>
-<option>🔨 Mace</option>
-<option>🏹 UHC</option>
-<option>🪓 Axe</option>
-<option>💨 Speed</option>
-<option>🛡️ Vanilla</option>
-<option>💎 DIA SMP</option>
-<option>🛒 Cart</option>
-<option>💣 Creeper</option>
-<option>🗡️ Spear</option>
+<option>Mace</option>
+<option>Sword</option>
+<option>Spear</option>
+<option>UHC</option>
+<option>Axe</option>
+<option>Speed</option>
+<option>Vanilla</option>
+<option>DIA SMP</option>
+<option>Cart</option>
+<option>Creeper</option>
 
 </select>
 
@@ -915,53 +499,29 @@ Add Tier
 
 </div>
 
+<!-- FILTERS -->
+
 <div class="filters">
 
 <button onclick="filterMode('ALL')">ALL</button>
-
-<button onclick="filterMode('🔨 Mace')">
-🔨 MACE
-</button>
-
-<button onclick="filterMode('⚔️ Sword')">
-⚔️ SWORD
-</button>
-
-<button onclick="filterMode('🗡️ Spear')">
-🗡️ SPEAR
-</button>
-
-<button onclick="filterMode('🏹 UHC')">
-🏹 UHC
-</button>
-
-<button onclick="filterMode('🪓 Axe')">
-🪓 AXE
-</button>
-
-<button onclick="filterMode('💨 Speed')">
-💨 SPEED
-</button>
-
-<button onclick="filterMode('🛡️ Vanilla')">
-🛡️ VANILLA
-</button>
-
-<button onclick="filterMode('💎 DIA SMP')">
-💎 DIA SMP
-</button>
-
-<button onclick="filterMode('🛒 Cart')">
-🛒 CART
-</button>
-
-<button onclick="filterMode('💣 Creeper')">
-💣 CREEPER
-</button>
+<button onclick="filterMode('Mace')">MACE</button>
+<button onclick="filterMode('Sword')">SWORD</button>
+<button onclick="filterMode('Spear')">SPEAR</button>
+<button onclick="filterMode('UHC')">UHC</button>
+<button onclick="filterMode('Axe')">AXE</button>
+<button onclick="filterMode('Speed')">SPEED</button>
+<button onclick="filterMode('Vanilla')">VANILLA</button>
+<button onclick="filterMode('DIA SMP')">DIA SMP</button>
+<button onclick="filterMode('Cart')">CART</button>
+<button onclick="filterMode('Creeper')">CREEPER</button>
 
 </div>
 
+<!-- BOARD -->
+
 <div id="leaderboard"></div>
+
+<!-- MODAL -->
 
 <div class="modal" id="modal">
 
@@ -1021,6 +581,7 @@ const tierRank = {
 "HT2":20,
 "LT1":25,
 "HT1":30
+
 };
 
 let currentFilter = "ALL";
@@ -1043,7 +604,9 @@ alert("Admin login success");
 }else{
 
 alert("Wrong password");
+
 }
+
 }
 
 function filterMode(mode){
@@ -1051,6 +614,7 @@ function filterMode(mode){
 currentFilter = mode;
 
 loadPlayers();
+
 }
 
 async function addPlayer(){
@@ -1081,11 +645,13 @@ document
 .value = "";
 
 loadPlayers();
+
 }
 
 function getAvatar(name){
 
 return name.charAt(0).toUpperCase();
+
 }
 
 async function loadPlayers(){
@@ -1106,6 +672,7 @@ if(error){
 console.log(error);
 
 return;
+
 }
 
 allData = data;
@@ -1139,10 +706,12 @@ if(!grouped[entry.player]){
 grouped[entry.player] = {
 points:0
 };
+
 }
 
 grouped[entry.player].points +=
 tierRank[entry.tier];
+
 });
 
 let sorted =
@@ -1176,7 +745,7 @@ ${getAvatar(player)}
 
 <h2>${player}</h2>
 
-<p>Competitive Minecraft Player</p>
+<p>Competitive Player</p>
 
 </div>
 
@@ -1193,7 +762,9 @@ ${getAvatar(player)}
 </div>
 
 `;
+
 });
+
 }
 
 function openPlayer(player){
@@ -1228,25 +799,22 @@ html += `
 
 <div class="tierCard">
 
-<div class="icon">
-${entry.gamemode.split(" ")[0]}
-</div>
-
-<div class="mode">
+<div class="tierMode">
 ${entry.gamemode}
 </div>
 
-<div class="tier">
+<div class="tierRank">
 ${entry.tier}
 </div>
 
-<div class="pts">
+<div class="tierPoints">
 ${tierRank[entry.tier]} pts
 </div>
 
 </div>
 
 `;
+
 });
 
 document
@@ -1257,6 +825,7 @@ total + " Total Points";
 document
 .getElementById("modalStats")
 .innerHTML = html;
+
 }
 
 function closeModal(){
@@ -1264,6 +833,7 @@ function closeModal(){
 document
 .getElementById("modal")
 .style.display = "none";
+
 }
 
 loadPlayers();
@@ -1272,4 +842,3 @@ loadPlayers();
 
 </body>
 </html>
-```
